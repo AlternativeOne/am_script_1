@@ -1,7 +1,8 @@
 import requests
 import json
 from urllib.parse import unquote
-from flask import Flask
+from flask import Flask, request
+import os
 
 def parse_events():
   try:
@@ -53,4 +54,9 @@ app = Flask(__name__)
 
 @app.route('/api/events/recent')
 def recent_events():
-  return parse_events()
+  api_key=request.headers.get('x-api-key')
+  if api_key:
+    if api_key==os.environ['VALID_API_KEY']:
+      return parse_events(), 200
+
+  return '', 404
