@@ -55,4 +55,6 @@ app = Flask(__name__)
 
 @app.route('/api/events/recent')
 def recent_events():
+  parse()
+  
   return recent
