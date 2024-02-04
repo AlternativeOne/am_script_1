@@ -1,1 +1,1 @@
-{"error": "a bytes-like object is required, not 'str'"}
+{"error": "'str' object has no attribute 'decode'"}
