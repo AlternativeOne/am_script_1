@@ -43,6 +43,6 @@ try:
 
   j_s=json.dumps(j)
 
-  open('recent.json', 'wb').write(j_s.encode('utf-8'))
+  open('recent.json', 'wb').write(j_s.encode('ascii'))
 except Exception as e:
   open('recent.json', 'w').write(json.dumps({'error': str(e)}))
