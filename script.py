@@ -47,4 +47,4 @@ try:
 
   open('recent.json', 'w').write(j_s)
 except Exception as e:
-  open('recent.json', 'w').write(f'{"error": "{str(e)}"}')
+  open('recent.json', 'w').write(json.dumps({'error': str(e)}))
