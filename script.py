@@ -28,14 +28,16 @@ try:
       i1 = trBody.index(titleStartTag, i) + len(titleStartTag)
       i2 = trBody.index(titleCloseTag, i1)
       title = trBody[i1:i2]
-      #title=unquote(title)
+      title=unquote(title)
+      title=title.encode('utf-8')
       title=title.replace("&#33;", "!").replace("&#39;", "'").replace("&quot;", "\"")
 
       i = trBody.index(msgIdenTag)
       i1 = trBody.index(msgStartTag, i) + len(msgStartTag)
       i2 = trBody.index(msgCloseTag, i1)
       message=trBody[i1:i2]
-      #message=unquote(message)
+      message=unquote(message)
+      message=message.encode('utf-8')
       message=message.replace("&#33;", "!").replace("&#39;", "'").replace("&quot;", "\"")
       
       it['nt']=title
