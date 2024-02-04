@@ -34,7 +34,7 @@ try:
       i = trBody.index(msgIdenTag)
       i1 = trBody.index(msgStartTag, i) + len(msgStartTag)
       i2 = trBody.index(msgCloseTag, i1)
-      String message=trBody[i1:i2]
+      message=trBody[i1:i2]
       message=unquote(message)
       message=message.replace("&#33;", "!").replace("&#39;", "'").replace("&quot;", "\"")
       
