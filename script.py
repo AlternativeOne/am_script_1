@@ -44,5 +44,5 @@ try:
   j_s=json.dumps(j)
 
   open('recent.json', 'w').write(j_s)
-except:
-  pass
+except Exception as e:
+  open('recent.json', 'w').write(str(e))
