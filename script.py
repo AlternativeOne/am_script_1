@@ -16,7 +16,7 @@ def parse_events():
       if ('m' not in it or 'nt' not in it) and 'su' in it:
         rt=requests.get(it['su'], headers={'User-Agent': agnt})
 
-        trBody=rt.content.decode('utf-8')
+        trBody=rt.text
       
         titleIdenTag = "property=\"og:title\""
         titleStartTag = "content=\""
