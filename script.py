@@ -11,7 +11,7 @@ try:
   j=json.loads(r.text)
 
   for it in j['alert_events']:
-    if 'm' not in it or 'nt' not in it:
+    if ('m' not in it or 'nt' not in it) and 'su' in it:
       rt=requests.get(it['su'], headers={'User-Agent': agnt})
 
       trBody=rt.text
@@ -45,4 +45,4 @@ try:
 
   open('recent.json', 'w').write(j_s)
 except Exception as e:
-  open('recent.json', 'w').write(str(e))
+  open('recent.json', 'w').write(f'{"error": "{str(e)}"}')
