@@ -14,7 +14,7 @@ try:
     if ('m' not in it or 'nt' not in it) and 'su' in it:
       rt=requests.get(it['su'], headers={'User-Agent': agnt})
 
-      trBody=rt.content.decode('utf-8')
+      trBody=rt.text
       
       titleIdenTag = "property=\"og:title\""
       titleStartTag = "content=\""
@@ -43,6 +43,6 @@ try:
 
   j_s=json.dumps(j)
 
-  open('recent.json', 'w').write(j_s)
+  open('recent.json', 'wb').write(j_s.encode('utf-8'))
 except Exception as e:
   open('recent.json', 'w').write(json.dumps({'error': str(e)}))
