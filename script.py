@@ -14,7 +14,7 @@ try:
     if ('m' not in it or 'nt' not in it) and 'su' in it:
       rt=requests.get(it['su'], headers={'User-Agent': agnt})
 
-      trBody=rt.text
+      trBody=rt.content
       
       titleIdenTag = "property=\"og:title\""
       titleStartTag = "content=\""
@@ -29,7 +29,6 @@ try:
       i2 = trBody.index(titleCloseTag, i1)
       title = trBody[i1:i2]
       title=unquote(title)
-      title=title.decode("unicode-escape")
       title=title.replace("&#33;", "!").replace("&#39;", "'").replace("&quot;", "\"")
 
       i = trBody.index(msgIdenTag)
@@ -37,7 +36,6 @@ try:
       i2 = trBody.index(msgCloseTag, i1)
       message=trBody[i1:i2]
       message=unquote(message)
-      message=message.decode("unicode-escape")
       message=message.replace("&#33;", "!").replace("&#39;", "'").replace("&quot;", "\"")
       
       it['nt']=title
