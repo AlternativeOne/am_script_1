@@ -2,9 +2,6 @@ import requests
 import json
 from urllib.parse import unquote
 from flask import Flask
-import threading
-
-recent='{}'
 
 def parse_events():
   try:
@@ -48,16 +45,12 @@ def parse_events():
 
     j_s=json.dumps(j)
 
-    recent=j_s
+    return j_s
   except Exception as e:
-    recent=json.dumps({'error': str(e)})
-
-  threading.Timer(60, parse_events).start()
+    return json.dumps({'error': str(e)})
 
 app = Flask(__name__)
 
 @app.route('/api/events/recent')
 def recent_events():
-  parse_events()
-  
-  return recent
+  return parse_events()
